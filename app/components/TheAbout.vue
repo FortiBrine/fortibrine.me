@@ -4,13 +4,46 @@
       <SectionLabel text="About Me" />
 
       <div class="grid lg:grid-cols-2 gap-16 items-center mt-12">
-        <!-- Avatar & decorative card -->
+        <!-- Terminal card -->
         <div class="relative flex justify-center">
-          <div class="relative w-72 h-72 sm:w-80 sm:h-80">
-            <!-- Glow ring -->
-            <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-violet-600 to-cyan-500 p-px">
-              <div class="w-full h-full rounded-2xl bg-slate-900 flex items-center justify-center text-8xl select-none">
-                👨🏼‍💻
+          <div class="relative w-72 sm:w-80">
+            <!-- Glow border -->
+            <div class="rounded-2xl bg-gradient-to-br from-violet-600 to-cyan-500 p-px shadow-2xl shadow-violet-500/20">
+              <div class="rounded-2xl bg-slate-950 overflow-hidden">
+                <!-- Terminal titlebar -->
+                <div class="flex items-center gap-2 px-4 py-3 bg-white/5 border-b border-white/5">
+                  <span class="w-3 h-3 rounded-full bg-red-500/70" />
+                  <span class="w-3 h-3 rounded-full bg-yellow-500/70" />
+                  <span class="w-3 h-3 rounded-full bg-emerald-500/70" />
+                  <span class="ml-2 text-xs text-slate-500 font-mono">~/fortibrine</span>
+                </div>
+                <!-- Terminal body -->
+                <div class="p-5 font-mono text-xs sm:text-sm space-y-2 select-none">
+                  <div>
+                    <span class="text-violet-400">❯</span>
+                    <span class="text-slate-300"> whoami</span>
+                  </div>
+                  <div class="text-cyan-400 pl-3">FortiBrine</div>
+                  <div class="mt-1">
+                    <span class="text-violet-400">❯</span>
+                    <span class="text-slate-300"> cat stack.txt</span>
+                  </div>
+                  <div class="pl-3 space-y-1 text-slate-400">
+                    <div><span class="text-emerald-400">lang</span>: Java, Kotlin, Go</div>
+                    <div><span class="text-emerald-400">api</span>: REST, gRPC</div>
+                    <div><span class="text-emerald-400">db</span>: PostgreSQL, MongoDB</div>
+                    <div><span class="text-emerald-400">mc</span>: Paper, Velocity, NMS</div>
+                  </div>
+                  <div class="mt-1">
+                    <span class="text-violet-400">❯</span>
+                    <span class="text-slate-300"> uptime</span>
+                  </div>
+                  <div class="pl-3 text-cyan-400">4+ years experience</div>
+                  <div class="flex items-center gap-1 mt-1">
+                    <span class="text-violet-400">❯</span>
+                    <span class="w-2 h-4 bg-violet-400 animate-pulse ml-1 rounded-sm" />
+                  </div>
+                </div>
               </div>
             </div>
             <!-- Floating badge -->

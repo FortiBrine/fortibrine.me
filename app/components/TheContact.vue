@@ -33,7 +33,13 @@
           rel="noopener noreferrer"
           class="group flex items-center gap-2.5 px-5 py-3 rounded-xl border border-white/8 bg-white/3 text-slate-400 font-medium text-sm transition-all duration-300 hover:border-white/20 hover:bg-white/8 hover:text-white hover:scale-105"
         >
-          <span class="text-lg">{{ social.icon }}</span>
+          <img
+            v-if="social.img"
+            :src="social.img"
+            :alt="social.name"
+            class="w-5 h-5 object-contain invert opacity-70 group-hover:opacity-100 transition-opacity duration-300"
+          />
+          <span v-else class="text-lg">{{ social.icon }}</span>
           {{ social.name }}
         </a>
       </div>
@@ -42,8 +48,15 @@
 </template>
 
 <script setup lang="ts">
-const socials = [
-  { name: 'GitHub', icon: '', url: 'https://github.com/FortiBrine' },
+interface Social {
+  name: string
+  url: string
+  img?: string
+  icon?: string
+}
+
+const socials: Social[] = [
+  { name: 'GitHub', img: '/icons/github.svg', url: 'https://github.com/FortiBrine' },
 ]
 </script>
 

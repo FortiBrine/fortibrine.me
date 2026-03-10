@@ -23,7 +23,13 @@
               class="group flex flex-col items-center gap-3 p-5 rounded-xl border border-white/5 bg-white/3 backdrop-blur-sm cursor-default transition-all duration-300 hover:border-white/15 hover:bg-white/8 hover:scale-105 hover:shadow-lg"
               :class="skill.glow"
             >
-              <span class="text-3xl transition-transform duration-300 group-hover:scale-110">{{ skill.icon }}</span>
+              <img
+                v-if="skill.img"
+                :src="skill.img"
+                :alt="skill.name"
+                class="w-8 h-8 object-contain transition-transform duration-300 group-hover:scale-110 invert opacity-80 group-hover:opacity-100"
+              />
+              <span v-else class="text-3xl transition-transform duration-300 group-hover:scale-110">{{ skill.icon }}</span>
               <span class="text-slate-300 text-sm font-medium text-center">{{ skill.name }}</span>
             </div>
           </div>
@@ -34,63 +40,75 @@
 </template>
 
 <script setup lang="ts">
-const skillCategories = [
+interface Skill {
+  name: string
+  glow: string
+  img?: string
+  icon?: string
+}
+
+interface SkillCategory {
+  name: string
+  skills: Skill[]
+}
+
+const skillCategories: SkillCategory[] = [
   {
     name: 'Backend',
     skills: [
-      { name: 'Java', icon: '☕', glow: 'hover:shadow-orange-500/10' },
-      { name: 'Kotlin', icon: '🟣', glow: 'hover:shadow-purple-500/10' },
-      { name: 'Go', icon: '🐹', glow: 'hover:shadow-cyan-500/10' },
-      { name: 'Spring Boot', icon: '🌱', glow: 'hover:shadow-green-500/10' },
-      { name: 'PostgreSQL', icon: '🐘', glow: 'hover:shadow-blue-500/10' },
-      { name: 'MongoDB', icon: '🍃', glow: 'hover:shadow-green-500/10' },
-      { name: 'Maven', icon: '📦', glow: 'hover:shadow-red-500/10' },
-      { name: 'Gradle', icon: '🐘', glow: 'hover:shadow-emerald-500/10' },
+      { name: 'Java', img: '/icons/java.svg', glow: 'hover:shadow-orange-500/10' },
+      { name: 'Kotlin', img: '/icons/kotlin.svg', glow: 'hover:shadow-purple-500/10' },
+      { name: 'Go', img: '/icons/go.svg', glow: 'hover:shadow-cyan-500/10' },
+      { name: 'Spring Boot', img: '/icons/springboot.svg', glow: 'hover:shadow-green-500/10' },
+      { name: 'PostgreSQL', img: '/icons/postgresql.svg', glow: 'hover:shadow-blue-500/10' },
+      { name: 'MongoDB', img: '/icons/mongodb.svg', glow: 'hover:shadow-green-500/10' },
+      { name: 'Maven', img: '/icons/apachemaven.svg', glow: 'hover:shadow-red-500/10' },
+      { name: 'Gradle', img: '/icons/gradle.svg', glow: 'hover:shadow-emerald-500/10' },
     ],
   },
   {
     name: 'Frontend',
     skills: [
-      { name: 'TypeScript', icon: '🔷', glow: 'hover:shadow-blue-500/10' },
-      { name: 'React', icon: '⚛️', glow: 'hover:shadow-cyan-500/10' },
-      { name: 'Vue.js', icon: '💚', glow: 'hover:shadow-emerald-500/10' },
+      { name: 'TypeScript', img: '/icons/typescript.svg', glow: 'hover:shadow-blue-500/10' },
+      { name: 'React', img: '/icons/react.svg', glow: 'hover:shadow-cyan-500/10' },
+      { name: 'Vue.js', img: '/icons/vuedotjs.svg', glow: 'hover:shadow-emerald-500/10' },
     ],
   },
   {
     name: 'DevOps & Tools',
     skills: [
-      { name: 'Linux', icon: '🐧', glow: 'hover:shadow-slate-400/10' },
-      { name: 'Git', icon: '🌿', glow: 'hover:shadow-orange-500/10' },
-      { name: 'Podman', icon: '🦭', glow: 'hover:shadow-purple-500/10' },
-      { name: 'Cloudflare Tunnel', icon: '🌐', glow: 'hover:shadow-orange-500/10' },
+      { name: 'Linux', img: '/icons/linux.svg', glow: 'hover:shadow-slate-400/10' },
+      { name: 'Git', img: '/icons/git.svg', glow: 'hover:shadow-orange-500/10' },
+      { name: 'Podman', img: '/icons/podman.svg', glow: 'hover:shadow-purple-500/10' },
+      { name: 'Cloudflare Tunnel', img: '/icons/cloudflare.svg', glow: 'hover:shadow-orange-500/10' },
     ],
   },
   {
     name: 'Minecraft Development',
     skills: [
-      { name: 'Spigot', icon: '🟫', glow: 'hover:shadow-orange-500/10' },
-      { name: 'Paper', icon: '📄', glow: 'hover:shadow-gray-400/10' },
-      { name: 'BungeeCord', icon: '🔗', glow: 'hover:shadow-purple-500/10' },
-      { name: 'Velocity', icon: '⚡', glow: 'hover:shadow-yellow-500/10' },
-      { name: 'ProtocolLib', icon: '📡', glow: 'hover:shadow-blue-500/10' },
-      { name: 'PlaceholderAPI', icon: '🔤', glow: 'hover:shadow-green-500/10' },
-      { name: 'NMS', icon: '⚙️', glow: 'hover:shadow-red-500/10' },
-      { name: 'NBT Tags', icon: '📦', glow: 'hover:shadow-indigo-500/10' },
+      { name: 'Spigot', icon: '🧩', glow: 'hover:shadow-orange-500/10' },
+      { name: 'Paper', icon: '🧩', glow: 'hover:shadow-gray-400/10' },
+      { name: 'BungeeCord', icon: '🧩', glow: 'hover:shadow-purple-500/10' },
+      { name: 'Velocity', icon: '🧩', glow: 'hover:shadow-yellow-500/10' },
+      { name: 'ProtocolLib', icon: '🧩', glow: 'hover:shadow-blue-500/10' },
+      { name: 'PlaceholderAPI', icon: '🧩', glow: 'hover:shadow-green-500/10' },
+      { name: 'NMS', icon: '🧩', glow: 'hover:shadow-red-500/10' },
+      { name: 'NBT Tags', icon: '🧩', glow: 'hover:shadow-indigo-500/10' },
     ],
   },
   {
     name: 'Libraries',
     skills: [
       { name: 'Lombok', icon: '🧩', glow: 'hover:shadow-pink-500/10' },
-      { name: 'Guava', icon: '🍈', glow: 'hover:shadow-green-500/10' },
-      { name: 'Gson', icon: '📄', glow: 'hover:shadow-red-500/10' },
-      { name: 'Kryonetty', icon: '🔌', glow: 'hover:shadow-cyan-500/10' },
-      { name: 'ORMLite', icon: '🗄️', glow: 'hover:shadow-blue-500/10' },
-      { name: 'Dagger', icon: '🗡️', glow: 'hover:shadow-red-500/10' },
-      { name: 'SnakeYAML', icon: '🐍', glow: 'hover:shadow-yellow-500/10' },
-      { name: 'Kotlin Serialization', icon: '📦', glow: 'hover:shadow-purple-500/10' },
-      { name: 'Kaml', icon: '🧾', glow: 'hover:shadow-indigo-500/10' },
-      { name: 'Koin', icon: '🔷', glow: 'hover:shadow-blue-500/10' },
+      { name: 'Guava', icon: '🧩', glow: 'hover:shadow-green-500/10' },
+      { name: 'Gson', icon: '🧩', glow: 'hover:shadow-red-500/10' },
+      { name: 'Kryonetty', icon: '🧩', glow: 'hover:shadow-cyan-500/10' },
+      { name: 'ORMLite', icon: '🧩', glow: 'hover:shadow-blue-500/10' },
+      { name: 'Dagger', icon: '🧩', glow: 'hover:shadow-red-500/10' },
+      { name: 'SnakeYAML', icon: '🧩', glow: 'hover:shadow-yellow-500/10' },
+      { name: 'Kotlin Serialization', icon: '🧩', glow: 'hover:shadow-purple-500/10' },
+      { name: 'Kaml', icon: '🧩', glow: 'hover:shadow-indigo-500/10' },
+      { name: 'Koin', icon: '🧩', glow: 'hover:shadow-blue-500/10' },
     ],
   },
 ]
