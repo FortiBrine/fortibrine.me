@@ -1,0 +1,26 @@
+services:
+  fortibrine-me:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: fortibrine-me
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  cloudflared:
+    image: docker.io/cloudflare/cloudflared:2026.2.0
+    container_name: fortibrine-me-cloudflared
+    restart: unless-stopped
+
+    profiles:
+      - tunnel
+    command: tunnel run --url http://fortibrine-me:3000 --token ${CLOUDFLARE_TUNNEL_TOKEN}
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
