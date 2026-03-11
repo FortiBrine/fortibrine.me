@@ -19,10 +19,13 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  background-color: #020617;
 }
 
 body {
   overflow-x: hidden;
+  background-color: #020617;
+  min-height: 100%;
 }
 
 /* Custom scrollbar */

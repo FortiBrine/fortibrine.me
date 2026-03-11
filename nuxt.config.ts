@@ -8,4 +8,14 @@ export default defineNuxtConfig({
         tailwindcss(),
     ],
   },
+  app: {
+    head: {
+      meta: [
+        { name: 'theme-color', content: '#020617' },
+      ],
+      style: [
+        { children: 'html, body { background-color: #020617; }' }
+      ],
+    },
+  },
 })
