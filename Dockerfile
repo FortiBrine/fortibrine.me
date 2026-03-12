@@ -14,8 +14,7 @@ WORKDIR /app
 
 RUN addgroup -S app && adduser -S app -G app
 
-COPY --from=builder /app/.output .output
-RUN chown -R app:app /app
+COPY --from=builder --chown=app:app /app/.output .output
 USER app
 
 EXPOSE 3000
