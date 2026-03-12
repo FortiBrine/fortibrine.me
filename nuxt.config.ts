@@ -8,6 +8,9 @@ export default defineNuxtConfig({
         tailwindcss(),
     ],
   },
+  nitro: {
+    preset: "static",
+  },
   app: {
     head: {
       meta: [

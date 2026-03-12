@@ -6,17 +6,12 @@ COPY package.json bun.lock ./
 RUN bun install --frozen-lockfile
 
 COPY . .
-RUN bun run build
+RUN bun run generate
 
-FROM docker.io/oven/bun:1.3.10-alpine
+FROM docker.io/library/caddy:2-alpine
 
-WORKDIR /app
+COPY --from=builder /app/.output/public /usr/share/caddy
 
 RUN addgroup -S app && adduser -S app -G app
 
-COPY --from=builder --chown=app:app /app/.output .output
 USER app
-
-EXPOSE 3000
-
-CMD ["bun", ".output/server/index.mjs"]
