@@ -12,6 +12,22 @@
   </div>
 </template>
 
+<script setup lang="ts">
+useSeoMeta({
+  title: 'Fortibrine - Backend Developer Portfolio',
+  description: 'Fortibrine portfolio: backend developer, Java, Kotlin, Go, APIs and Minecraft server development.',
+  robots: 'index, follow'
+})
+
+useHead({
+  title: 'FortiBrine',
+  link: [
+    { rel: 'canonical', href: 'https://fortibrine.me/' }
+  ]
+})
+
+</script>
+
 <style>
 @import "tailwindcss";
 
