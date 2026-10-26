@@ -1,10 +1,12 @@
 <script lang="ts">
+	import { asset } from '$app/paths';
+	import type { AssetPath } from '$app/types';
 	import SectionLabel from '#lib/components/SectionLabel.svelte';
 
-	type Social = { name: string; url: string; img?: string; icon?: string };
+	type Social = { name: string; url: string; img?: AssetPath; icon?: string };
 
 	const socials: Social[] = [
-		{ name: 'GitHub', img: '/icons/github.svg', url: 'https://github.com/FortiBrine' }
+		{ name: 'GitHub', img: 'icons/github.svg', url: 'https://github.com/FortiBrine' }
 	];
 </script>
 
@@ -54,7 +56,7 @@
 				>
 					{#if social.img}
 						<img
-							src={social.img}
+							src={asset(social.img)}
 							alt={social.name}
 							class="h-5 w-5 object-contain opacity-70 invert transition-opacity duration-300 group-hover:opacity-100"
 						/>

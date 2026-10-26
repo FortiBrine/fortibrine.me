@@ -1,44 +1,46 @@
 <script lang="ts">
+	import { asset } from '$app/paths';
+	import type { AssetPath } from '$app/types';
 	import SectionLabel from '#lib/components/SectionLabel.svelte';
 
-	type Skill = { name: string; glow: string; img?: string; icon?: string };
+	type Skill = { name: string; glow: string; img?: AssetPath; icon?: string };
 	type SkillCategory = { name: string; skills: Skill[] };
 
 	const skillCategories: SkillCategory[] = [
 		{
 			name: 'Backend',
 			skills: [
-				{ name: 'Java', img: '/icons/java.svg', glow: 'hover:shadow-orange-500/10' },
-				{ name: 'Kotlin', img: '/icons/kotlin.svg', glow: 'hover:shadow-purple-500/10' },
-				{ name: 'Go', img: '/icons/go.svg', glow: 'hover:shadow-cyan-500/10' },
-				{ name: 'Spring Boot', img: '/icons/springboot.svg', glow: 'hover:shadow-green-500/10' },
+				{ name: 'Java', img: 'icons/java.svg', glow: 'hover:shadow-orange-500/10' },
+				{ name: 'Kotlin', img: 'icons/kotlin.svg', glow: 'hover:shadow-purple-500/10' },
+				{ name: 'Go', img: 'icons/go.svg', glow: 'hover:shadow-cyan-500/10' },
+				{ name: 'Spring Boot', img: 'icons/springboot.svg', glow: 'hover:shadow-green-500/10' },
 				{
 					name: 'PostgreSQL',
-					img: '/icons/postgresql.svg',
+					img: 'icons/postgresql.svg',
 					glow: 'hover:shadow-blue-500/10'
 				},
-				{ name: 'MongoDB', img: '/icons/mongodb.svg', glow: 'hover:shadow-green-500/10' },
-				{ name: 'Maven', img: '/icons/apachemaven.svg', glow: 'hover:shadow-red-500/10' },
-				{ name: 'Gradle', img: '/icons/gradle.svg', glow: 'hover:shadow-emerald-500/10' }
+				{ name: 'MongoDB', img: 'icons/mongodb.svg', glow: 'hover:shadow-green-500/10' },
+				{ name: 'Maven', img: 'icons/apachemaven.svg', glow: 'hover:shadow-red-500/10' },
+				{ name: 'Gradle', img: 'icons/gradle.svg', glow: 'hover:shadow-emerald-500/10' }
 			]
 		},
 		{
 			name: 'Frontend',
 			skills: [
-				{ name: 'TypeScript', img: '/icons/typescript.svg', glow: 'hover:shadow-blue-500/10' },
-				{ name: 'React', img: '/icons/react.svg', glow: 'hover:shadow-cyan-500/10' },
-				{ name: 'Vue.js', img: '/icons/vuedotjs.svg', glow: 'hover:shadow-emerald-500/10' }
+				{ name: 'TypeScript', img: 'icons/typescript.svg', glow: 'hover:shadow-blue-500/10' },
+				{ name: 'React', img: 'icons/react.svg', glow: 'hover:shadow-cyan-500/10' },
+				{ name: 'Vue.js', img: 'icons/vuedotjs.svg', glow: 'hover:shadow-emerald-500/10' }
 			]
 		},
 		{
 			name: 'DevOps & Tools',
 			skills: [
-				{ name: 'Linux', img: '/icons/linux.svg', glow: 'hover:shadow-slate-400/10' },
-				{ name: 'Git', img: '/icons/git.svg', glow: 'hover:shadow-orange-500/10' },
-				{ name: 'Podman', img: '/icons/podman.svg', glow: 'hover:shadow-purple-500/10' },
+				{ name: 'Linux', img: 'icons/linux.svg', glow: 'hover:shadow-slate-400/10' },
+				{ name: 'Git', img: 'icons/git.svg', glow: 'hover:shadow-orange-500/10' },
+				{ name: 'Podman', img: 'icons/podman.svg', glow: 'hover:shadow-purple-500/10' },
 				{
 					name: 'Cloudflare Tunnel',
-					img: '/icons/cloudflare.svg',
+					img: 'icons/cloudflare.svg',
 					glow: 'hover:shadow-orange-500/10'
 				}
 			]
@@ -106,7 +108,7 @@
 							>
 								{#if skill.img}
 									<img
-										src={skill.img}
+										src={asset(skill.img)}
 										alt={skill.name}
 										class="h-8 w-8 object-contain opacity-80 invert transition-transform duration-300 group-hover:scale-110 group-hover:opacity-100"
 									/>
